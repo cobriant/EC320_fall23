@@ -1,0 +1,36 @@
+project:
+  type: book
+
+book:
+  title: "The Beginner's Econometrics Workbook"
+  author: "Colleen O'Briant"
+  date: "5/4/2023"
+  chapters:
+    - index.qmd
+    - random_variables.qmd
+    - variance_covariance.qmd
+    - unbiasedness.qmd
+    - R1_vectors_pipes.qmd
+    - R2_tibbles_ggplot.qmd
+    - simple_reg.qmd
+    - reg_coefs.qmd
+    - R3_dplyr.qmd
+    - hypothesis_testing.qmd
+    - R4_ggplot.qmd
+    - multiple_reg.qmd
+    - nonlinear.qmd
+    - dummy_vars.qmd
+    - omitted_vars.qmd
+    - proxy_vars.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

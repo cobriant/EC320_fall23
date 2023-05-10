@@ -1,0 +1,21 @@
+# R: dplyr
+
+<iframe width="600" height="364" src="https://www.youtube.com/embed/HJTaCO8EXTc" title="Lab 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Download the assignment
+
+Link to download.
+
+![](tidyverse_zine/Learning the Tidyverse-27.jpg)
+![](tidyverse_zine/Learning the Tidyverse-28.jpg)
+![](tidyverse_zine/Learning the Tidyverse-29.jpg)
+![](tidyverse_zine/Learning the Tidyverse-30.jpg)
+![](tidyverse_zine/Learning the Tidyverse-31.jpg)
+![](tidyverse_zine/Learning the Tidyverse-32.jpg)
+![](tidyverse_zine/Learning the Tidyverse-33.jpg)
+![](tidyverse_zine/Learning the Tidyverse-34.jpg)
+![](tidyverse_zine/Learning the Tidyverse-35.jpg)
+![](tidyverse_zine/Learning the Tidyverse-36.jpg)
+![](tidyverse_zine/Learning the Tidyverse-37.jpg)
+![](tidyverse_zine/Learning the Tidyverse-38.jpg)
+![](tidyverse_zine/Learning the Tidyverse-39.jpg)

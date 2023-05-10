@@ -1,0 +1,32 @@
+# R: tibbles
+
+<iframe width="600" height="364" src="https://www.youtube.com/embed/xkrx-DBSrnk" title="EC320 lab2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+In this chapter, you'll learn about holding data in tibbles (tidy tables) and you'll get an introduction to ggplot ("grammar of graphics" plots).
+
+## Download this Lab Assignment
+
+[Link to download](https://github.com/cobriant/EC320_lab2/archive/refs/heads/main.zip). 
+
+Find the new folder (probably in your downloads folder). On Macs, opening the folder will unzip it. On Windows, you’ll right-click and hit “extract”. Then navigate to the new folder named EC320_lab2-main and double click on the R project EC320_lab2.Rproj. RStudio should open. If it doesn’t, open RStudio and go to File > Open Project and then find EC320_lab2.Rproj.
+
+In RStudio, go to the lower righthand panel and hit the folder R. This takes you to the list of two exercises (koans) you’ll complete as homework.
+
+## tibbles and intro to ggplot
+
+![](tidyverse_zine/Learning the Tidyverse-11.jpg)
+![](tidyverse_zine/Learning the Tidyverse-12.jpg)
+![](tidyverse_zine/Learning the Tidyverse-13.jpg)
+![](tidyverse_zine/Learning the Tidyverse-14.jpg)
+![](tidyverse_zine/Learning the Tidyverse-15.jpg)
+![](tidyverse_zine/Learning the Tidyverse-16.jpg)
+![](tidyverse_zine/Learning the Tidyverse-17.jpg)
+![](tidyverse_zine/Learning the Tidyverse-18.jpg)
+![](tidyverse_zine/Learning the Tidyverse-19.jpg)
+![](tidyverse_zine/Learning the Tidyverse-20.jpg)
+![](tidyverse_zine/Learning the Tidyverse-21.jpg)
+![](tidyverse_zine/Learning the Tidyverse-22.jpg)
+![](tidyverse_zine/Learning the Tidyverse-23.jpg)
+![](tidyverse_zine/Learning the Tidyverse-24.jpg)
+![](tidyverse_zine/Learning the Tidyverse-25.jpg)
+![](tidyverse_zine/Learning the Tidyverse-26.jpg)

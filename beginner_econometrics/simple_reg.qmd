@@ -1,0 +1,7 @@
+# Simple Regression
+
+<p style="background-color:#f7f0df; border-width:3px; border-style:solid; border-color:#f7f0df; padding: 1em;">
+**Reading**: Dougherty Chapter 1 (pages 85 - 112)
+</p>
+
+

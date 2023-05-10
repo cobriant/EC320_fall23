@@ -1,0 +1,32 @@
+# Introduction {.unnumbered}
+
+## Workbook Outline
+
+In Chapters 1-3, you'll find a review of several essential topics in mathematical probability and statistics. From Chapters 4 and 5, the focus shifts to using R and the Tidyverse for data analytics problem-solving. Additionally, Chapters 8 and 10 delve deeper into R tools for data analytics. In Chapters 6, 7, and 9, we'll examine the capabilities of the simple regression model. Lastly, Chapters 11-15 explore the versatility of OLS, as well as its important pitfalls.
+
+## Class Schedule
+
+| Day  | Homework | In-class  |
+|---|---------|---------|
+| 9/26 |   | Syllabus |  |
+| 9/28 | CH1: Random Variables | Classwork 1 (Analytical) |
+| 10/3 | CH2: Variance and Covariance | Classwork 2 (Analytical) |
+| 10/5 | CH3: Unbiasedness and efficiency | Classwork 3 (Analytical) |
+| 10/10 | CH4: Vectors and Pipes in R | Classwork 4: Stats (R) |
+| 10/12 | CH5: Tibbles in R | Classwork 5: Plots with Love Island (R) |
+| 10/17 | CH6: Simple Regression | Classwork 6: lm with Love Island (R) |
+| 10/19 | CH7: Properties of Regression Coefficients | Classwork 7 (Analytical) |
+| 10/24 | CH8: Dplyr in R | Classwork 8: Dplyr Murder Mystery (R) |
+| 10/26 | CH9: Hypothesis Testing | Classwork 9 (R) |
+| 10/31 | CH10: Ggplot | Classwork 10 (R) |
+| 11/2 | Practice Midterm | Midterm Exam |
+| 11/7 | CH11: Multiple Regression | Classwork 11 (R) |
+| 11/9 | CH12: Nonlinear Models (part 1) | Classwork 12 (Analytical) |
+| 11/14 | CH12: Nonlinear Models (part 2) | Classwork 13 (R) |
+| 11/16 | CH 13: Dummy Variables | Classwork 14 (Analytical) |
+| 11/21 | CH 14: Omitted Variable Bias | Classwork 15 (Analytical) |
+| 11/28 | CH 15: Proxy Variables | Classwork 16 (Analytical) |
+| 11/30 |  |  | 
+| TBA | Practice Final | Final Exam |
+
+

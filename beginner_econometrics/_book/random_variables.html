@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Beginner’s Econometrics Workbook - 1&nbsp; Random Variables</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./variance_covariance.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Random Variables</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">The Beginner’s Econometrics Workbook</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./random_variables.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Random Variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./variance_covariance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variance and Covariance</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unbiasedness.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Unbiasedness</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R1_vectors_pipes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R: vectors and pipes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R2_tibbles_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">R: tibbles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simple_reg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simple Regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reg_coefs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Properties of Regression Coefficients</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R3_dplyr.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">R: dplyr</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypothesis_testing.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis Testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R4_ggplot.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">R: ggplot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multiple_reg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiple Regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nonlinear.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Nonlinear Models and Transformations of Variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dummy_vars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dummy Variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./omitted_vars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Omitted Variable Bias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proxy_vars.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Proxy Variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link active" data-scroll-target="#random-variables"> <span class="header-section-number">1.1</span> Random Variables</a></li>
+  <li><a href="#discrete-probability-distributions" id="toc-discrete-probability-distributions" class="nav-link" data-scroll-target="#discrete-probability-distributions"> <span class="header-section-number">1.2</span> Discrete Probability Distributions</a></li>
+  <li><a href="#expected-values-of-discrete-random-variables" id="toc-expected-values-of-discrete-random-variables" class="nav-link" data-scroll-target="#expected-values-of-discrete-random-variables"> <span class="header-section-number">1.3</span> Expected Values of Discrete Random Variables</a></li>
+  <li><a href="#expected-value-rules" id="toc-expected-value-rules" class="nav-link" data-scroll-target="#expected-value-rules"> <span class="header-section-number">1.4</span> Expected Value Rules</a></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"> <span class="header-section-number">1.5</span> Continuous Random Variables</a></li>
+  <li><a href="#classwork" id="toc-classwork" class="nav-link" data-scroll-target="#classwork"> <span class="header-section-number">1.6</span> Classwork</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Random Variables</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p style="background-color:#f7f0df; border-width:3px; border-style:solid; border-color:#f7f0df; padding: 1em;">
+<strong>Reading</strong>: Dougherty R.2 and R.3 (pages 7 - 19)
+</p>
+<section id="random-variables" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">1.1</span> Random Variables</h2>
+<p>A <strong>random variable</strong> is any variable whose value cannot be predicted exactly. A few examples:</p>
+<ol type="1">
+<li>The message you get in a fortune cookie is a random variable.</li>
+<li>The time you spend searching for your keys after you’ve misplaced them is a random variable.</li>
+<li>The number of likes you get on a social media post is a random variable.</li>
+<li>The number of customers who enter a small retail store on a given day is a random variable.</li>
+<li>The sales revenue at that small retail store on a given day is a random variable.</li>
+</ol>
+<p>Some random variables are <strong>discrete</strong> while others are <strong>continuous</strong>. What’s the difference? Discrete random variables are <em>counted</em> like the number of M&amp;M’s you have, while continuous random variables are <em>measured</em> like how heavy your bag of candy is. Discrete random variables take on a small number of possible values, while continuous random variables can take on a very large number of possible values.</p>
+<p>Other variables are categorical instead of being numeric. They may represent qualitative data that can be divided into categories or groups. We’ll lump categorical variables in with discrete variables and we’ll explain why toward the end of this course (see Chapter 13: Dummy Variables).</p>
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+<strong>Example</strong>: The message you get in a fortune cookie takes on values like “An exciting opportunity lies ahead of you”, which is not numeric, it’s categorical. We’ll therefore label this random variable a <strong>discrete</strong> random variable.
+</p>
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+<strong>Example</strong>: The “time you spend searching for your keys after you’ve misplaced them” takes on values like 3.982 minutes. It’s a value that can be measured precisely instead of counted, so we’d label this random variable a <strong>continuous</strong> random variable.
+</p>
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+<strong>Exercise 1</strong>: Is “the number of likes you get on a social media post” discrete or continuous? Is “the number of customers who enter a small retail store on a given day” discrete or continuous? Is “the sales revenue at that small retail store on a given day” discrete or continuous?
+</p>
+</section>
+<section id="discrete-probability-distributions" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="discrete-probability-distributions"><span class="header-section-number">1.2</span> Discrete Probability Distributions</h2>
+<p>Consider the discrete random variable “a dice roll”. It could take on values 1 to 6 and if it’s a fair die, it takes on each of those values with probability 1/6. Our notation will be: X is the random variable, <span class="math inline">\(x_i\)</span> is a potential outcome for <span class="math inline">\(X\)</span>, and each potential outcome <span class="math inline">\(x_i\)</span> happens with probability <span class="math inline">\(p_i\)</span>:</p>
+<div id="tbl-dice" class="anchored">
+<table class="table">
+<caption>Table 1.1: Potential Outcomes and Probabilities for a Dice Roll</caption>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_i\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p_i\)</span></td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Consider another random variable <span class="math inline">\(X\)</span> as the sum of two dice rolls. In <a href="#tbl-dice">Table&nbsp;<span>1.1</span></a>, the first row represents the potential outcomes for the first roll and the first column represents the potential outcomes for the second roll. The values in the interior of the table represent potential outcomes for <span class="math inline">\(X\)</span> (the sum).</p>
+<div id="tbl-twodice" class="anchored">
+<table class="table">
+<caption>Table 1.2: Potential Outcomes for the Sum of 2 Dice Rolls</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td><strong>2</strong></td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td><strong>3</strong></td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td><strong>4</strong></td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td><strong>5</strong></td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td><strong>6</strong></td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each of the cells in <a href="#tbl-twodice">Table&nbsp;<span>1.2</span></a> can occur with equal probability. That implies that X = 2 with probability 1/36. And since there are two ways to get to X = 3, this outcome occurs with probability 2/36. <a href="#tbl-twodiceprobs">Table&nbsp;<span>1.3</span></a> shows the probabilities for each X potential outcome:</p>
+<div id="tbl-twodiceprobs" class="anchored">
+<table class="table">
+<caption>Table 1.3: Potential Outcomes and Probabilities for the Sum of 2 Dice Rolls</caption>
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_i\)</span></th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p_i\)</span></td>
+<td>1/36</td>
+<td>2/36</td>
+<td>3/36</td>
+<td>4/36</td>
+<td>5/36</td>
+<td>6/36</td>
+<td>5/36</td>
+<td>4/36</td>
+<td>3/36</td>
+<td>2/36</td>
+<td>1/36</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+<strong>Exercise 2</strong>: Let X be the random variable “the number of likes you get on a social media post”. Suppose that you get 0-4 likes per post each with equal probability. Fill out <a href="#tbl-likes">Table&nbsp;<span>1.4</span></a> below.
+</p>
+<div id="tbl-likes" class="anchored">
+<table class="table">
+<caption>Table 1.4: Number of Likes on Social Media: Potential Outcomes and Probabilities</caption>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_i\)</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p_i\)</span></td>
+<td>__</td>
+<td>__</td>
+<td>__</td>
+<td>__</td>
+<td>__</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="expected-values-of-discrete-random-variables" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="expected-values-of-discrete-random-variables"><span class="header-section-number">1.3</span> Expected Values of Discrete Random Variables</h2>
+<p>The <strong>expected value</strong> of a random variable is its long-term average. We’ll use the notation <span class="math inline">\(E[X] = \mu_X\)</span>. If the variable is discrete, you can calculate its expectation by taking the sum of all possible values of the random variable, each multiplied by their corresponding probabilities.</p>
+<p>Expectation of a discrete random variable <span class="math inline">\(X\)</span>: <span class="math inline">\(E[X] = \sum_i x_i p_i\)</span>, where <span class="math inline">\(x_i\)</span> is a potential outcome for <span class="math inline">\(X\)</span> and <span class="math inline">\(p_i\)</span> is the probability that outcome occurs.</p>
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+<strong>Example</strong>: What’s the expected value <span class="math inline">\(\mu_X\)</span> of a dice roll? Consulting <a href="#tbl-dice">Table&nbsp;<span>1.1</span></a>, <span class="math inline">\(E[X] = \sum_i x_i p_i =\)</span> <span class="math inline">\(1 * (1/6) + 2 * (1/6) + 3 * (1/6) + 4 * (1/6) + 5 * (1/6) + 6 * (1/6) = 21/6 = 3.5\)</span>.
+</p>
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+<strong>Exercise 3</strong>: Let X be the random variable “the number of likes you get on a social media post” and suppose that you get 0-4 likes per post each with equal probability. How many likes do you get in expectation for a post?
+</p>
+</section>
+<section id="expected-value-rules" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="expected-value-rules"><span class="header-section-number">1.4</span> Expected Value Rules</h2>
+<p>Here are some math rules about the way expected values work. Let <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, and <span class="math inline">\(Z\)</span> be random variables and let <span class="math inline">\(b\)</span> be a constant.</p>
+<ol type="1">
+<li><p>The expectation of the sum of several random variables is the sum of their expectations: <span class="math inline">\(E[X + Y + Z] = E[X] + E[Y] + E[Z]\)</span>.</p></li>
+<li><p>Constants can pass outside of an expectation: <span class="math inline">\(E[bX] = b E[X]\)</span></p></li>
+<li><p>The expected value of a constant is that constant: <span class="math inline">\(E[b] = b\)</span>.</p></li>
+</ol>
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+<strong>Example</strong>: Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables and let <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> be consants. If <span class="math inline">\(Y = b_1 + b_2 X\)</span>, then since <span class="math inline">\(E[Y] = E[b_1 + b_2 X]\)</span>, we can simplify using the rules above to get: <span class="math inline">\(E[Y] = b_1 + b_2 E[X]\)</span>.
+</p>
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+<strong>Exercise 4</strong>: Imagine you have a social media account where you receive an average of 2 likes per post. At the beginning of the day, you make two posts and receive a total of 3 likes. You plan to make 5 more posts today. Given that <span class="math inline">\(X\)</span> represents the number of likes on a single post and <span class="math inline">\(E[X] = 2\)</span>, as well as <span class="math inline">\(Y\)</span> representing the total number of likes received today with the formula <span class="math inline">\(Y = 3 + 5 * X\)</span>, what is the expected total number of likes, <span class="math inline">\(E[Y]\)</span>, you should receive by the end of the day?
+</p>
+</section>
+<section id="continuous-random-variables" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="continuous-random-variables"><span class="header-section-number">1.5</span> Continuous Random Variables</h2>
+<p>TODO</p>
+</section>
+<section id="classwork" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="classwork"><span class="header-section-number">1.6</span> Classwork</h2>
+<ol type="1">
+<li><p>Suppose a social media user has an equal probability of getting 0-4 likes on any given post. Let X be the random variable representing their combined likes from two independent posts.</p>
+<ol type="a">
+<li><p>What is the probability that X will be 2?</p></li>
+<li><p>What is the probability that X will be 6?</p></li>
+<li><p>What is <span class="math inline">\(E[X]\)</span>?</p></li>
+<li><p>If the user wants 10 likes in expectation every day, how many posts should they make each day?</p></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be discrete random variables, so <span class="math inline">\(E[X] = \sum_i x_i p_i\)</span>. Should we expect in general that <span class="math inline">\(E[XY] = E[X] E[Y]\)</span>? Explain your answer.</p></li>
+<li><p>TODO</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./variance_covariance.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Variance and Covariance</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

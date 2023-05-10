@@ -1,0 +1,71 @@
+# R: vectors and pipes
+
+<iframe width="600" height="364" src="https://www.youtube.com/embed/F-Xfgmd46zM" title="EC320 Lab 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Grab a Computer
+
+First things first, you should decide which computer you'd like to do your programming assignments on. It can be a Mac, Windows, or Linux machine: all are equally good. I do absolutely everything on my little macbook air laptop. Please let me know ASAP if you don't have a computer to program on (chromebooks and ipads won't work but there are workarounds I can discuss with you). 
+
+## Download and Install R
+
+Go here: https://cran.r-project.org/ and follow the instructions to download R for your Linux, Windows, or Mac. You should download the latest release. 
+
+Mac users: make sure you know whether you have an Apple silicon mac or an older intel-based mac and make sure that you download the correct version of R. If you're using a mac, you'll also need to install xquartz: https://www.xquartz.org/.
+
+## Install RStudio
+
+Go here: https://posit.co/download/rstudio-desktop/ and click the blue button that says step 2: install RStudio Desktop. Follow the instructions to complete the installation.
+
+## Open RStudio and Install some Packages
+
+Run these lines of code in your console to make sure you have the tidyverse installed and attached to your current session.
+
+```{r, eval = F}
+install.packages("tidyverse", dependencies = TRUE)
+library(tidyverse)
+```
+
+Install qelp (quick help): an alternative set of beginner friendly help docs I created (with contributions from previous students) for commonly used functions in R and the tidyverse. Once you have the package installed, you can access the help docs from inside RStudio.
+
+```{r, eval = F}
+install.packages("Rcpp", dependencies = TRUE)
+install.packages("devtools", dependencies = TRUE)
+```
+
+If prompted, type "yes" in your console and then hit enter when you're asked if you want to install from sources. Then you can run the following:
+
+```{r, eval = F}
+library(devtools)
+install_github("cobriant/qelp")
+```
+
+To test that everything worked, now run:
+
+```{r, eval = F}
+?qelp::install.packages
+```
+
+If everything went right, the help docs I wrote on the function `install.packages` should pop up in the lower right hand pane. Whenever you want to read the qelp docs on a function, you type ?, qelp, two colons :: which means “I want the help docs on this function which is from the package qelp”, and then the name of the function you’re wondering about.
+
+## Download this Lab Assignment
+
+[Click this link to download the assignment](https://github.com/cobriant/EC320_lab1/archive/refs/heads/main.zip).
+
+Find the folder you just downloaded (probably in your downloads folder). On Macs, opening the folder will unzip it. On Windows, you’ll right-click and hit “extract”. Then navigate to the new folder named `EC320_lab1` and double click on the R project `EC320_lab1.Rproj`. RStudio should open. If it doesn’t, open RStudio and go to File > Open Project and then find EC320_lab1.Rproj. 
+
+It's important to always open RStudio with the .RProj for the lab you're working on. If you open the koan file instead of the .RProj, the tests will not run because they don't have the information about how all the files in the folder are linked.
+
+In RStudio, go to the lower righthand panel and hit the folder R. This takes you to a list of two exercises (koans) you’ll complete as homework. The first teaches you about vectors and the second teaches you about pipes. Read the introduction below and then jump in!
+
+## Intro to R
+
+![](tidyverse_zine/Learning the Tidyverse-03.jpg)
+![](tidyverse_zine/Learning the Tidyverse-04.jpg)
+![](tidyverse_zine/Learning the Tidyverse-05.jpg)
+![](tidyverse_zine/Learning the Tidyverse-06.jpg)
+![](tidyverse_zine/Learning the Tidyverse-07.jpg)
+![](tidyverse_zine/Learning the Tidyverse-08.jpg)
+![](tidyverse_zine/Learning the Tidyverse-09.jpg)
+![](tidyverse_zine/Learning the Tidyverse-10.jpg)
+
+

@@ -1,0 +1,233 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The Beginner’s Econometrics Workbook",
+    "section": "",
+    "text": "In Chapters 1-3, you’ll find a review of several essential topics in mathematical probability and statistics. From Chapters 4 and 5, the focus shifts to using R and the Tidyverse for data analytics problem-solving. Additionally, Chapters 8 and 10 delve deeper into R tools for data analytics. In Chapters 6, 7, and 9, we’ll examine the capabilities of the simple regression model. Lastly, Chapters 11-15 explore the versatility of OLS, as well as its important pitfalls.\n\n\n\n\n\n\n\n\n\n\n\nDay\nHomework\nIn-class\n\n\n\n\n9/26\n\nSyllabus\n\n\n9/28\nCH1: Random Variables\nClasswork 1 (Analytical)\n\n\n10/3\nCH2: Variance and Covariance\nClasswork 2 (Analytical)\n\n\n10/5\nCH3: Unbiasedness and efficiency\nClasswork 3 (Analytical)\n\n\n10/10\nCH4: Vectors and Pipes in R\nClasswork 4: Stats (R)\n\n\n10/12\nCH5: Tibbles in R\nClasswork 5: Plots with Love Island (R)\n\n\n10/17\nCH6: Simple Regression\nClasswork 6: lm with Love Island (R)\n\n\n10/19\nCH7: Properties of Regression Coefficients\nClasswork 7 (Analytical)\n\n\n10/24\nCH8: Dplyr in R\nClasswork 8: Dplyr Murder Mystery (R)\n\n\n10/26\nCH9: Hypothesis Testing\nClasswork 9 (R)\n\n\n10/31\nCH10: Ggplot\nClasswork 10 (R)\n\n\n11/2\nPractice Midterm\nMidterm Exam\n\n\n11/7\nCH11: Multiple Regression\nClasswork 11 (R)\n\n\n11/9\nCH12: Nonlinear Models (part 1)\nClasswork 12 (Analytical)\n\n\n11/14\nCH12: Nonlinear Models (part 2)\nClasswork 13 (R)\n\n\n11/16\nCH 13: Dummy Variables\nClasswork 14 (Analytical)\n\n\n11/21\nCH 14: Omitted Variable Bias\nClasswork 15 (Analytical)\n\n\n11/28\nCH 15: Proxy Variables\nClasswork 16 (Analytical)\n\n\n11/30\n\n\n\n\nTBA\nPractice Final\nFinal Exam"
+  },
+  {
+    "objectID": "random_variables.html",
+    "href": "random_variables.html",
+    "title": "1  Random Variables",
+    "section": "",
+    "text": "Reading: Dougherty R.2 and R.3 (pages 7 - 19)"
+  },
+  {
+    "objectID": "random_variables.html#random-variables",
+    "href": "random_variables.html#random-variables",
+    "title": "1  Random Variables",
+    "section": "1.1 Random Variables",
+    "text": "1.1 Random Variables\nA random variable is any variable whose value cannot be predicted exactly. A few examples:\n\nThe message you get in a fortune cookie is a random variable.\nThe time you spend searching for your keys after you’ve misplaced them is a random variable.\nThe number of likes you get on a social media post is a random variable.\nThe number of customers who enter a small retail store on a given day is a random variable.\nThe sales revenue at that small retail store on a given day is a random variable.\n\nSome random variables are discrete while others are continuous. What’s the difference? Discrete random variables are counted like the number of M&M’s you have, while continuous random variables are measured like how heavy your bag of candy is. Discrete random variables take on a small number of possible values, while continuous random variables can take on a very large number of possible values.\nOther variables are categorical instead of being numeric. They may represent qualitative data that can be divided into categories or groups. We’ll lump categorical variables in with discrete variables and we’ll explain why toward the end of this course (see Chapter 13: Dummy Variables).\n\nExample: The message you get in a fortune cookie takes on values like “An exciting opportunity lies ahead of you”, which is not numeric, it’s categorical. We’ll therefore label this random variable a discrete random variable.\n\n\nExample: The “time you spend searching for your keys after you’ve misplaced them” takes on values like 3.982 minutes. It’s a value that can be measured precisely instead of counted, so we’d label this random variable a continuous random variable.\n\n\nExercise 1: Is “the number of likes you get on a social media post” discrete or continuous? Is “the number of customers who enter a small retail store on a given day” discrete or continuous? Is “the sales revenue at that small retail store on a given day” discrete or continuous?"
+  },
+  {
+    "objectID": "random_variables.html#discrete-probability-distributions",
+    "href": "random_variables.html#discrete-probability-distributions",
+    "title": "1  Random Variables",
+    "section": "1.2 Discrete Probability Distributions",
+    "text": "1.2 Discrete Probability Distributions\nConsider the discrete random variable “a dice roll”. It could take on values 1 to 6 and if it’s a fair die, it takes on each of those values with probability 1/6. Our notation will be: X is the random variable, \\(x_i\\) is a potential outcome for \\(X\\), and each potential outcome \\(x_i\\) happens with probability \\(p_i\\):\n\n\nTable 1.1: Potential Outcomes and Probabilities for a Dice Roll\n\n\n\\(x_i\\)\n1\n2\n3\n4\n5\n6\n\n\n\n\n\\(p_i\\)\n1/6\n1/6\n1/6\n1/6\n1/6\n1/6\n\n\n\n\nConsider another random variable \\(X\\) as the sum of two dice rolls. In Table 1.1, the first row represents the potential outcomes for the first roll and the first column represents the potential outcomes for the second roll. The values in the interior of the table represent potential outcomes for \\(X\\) (the sum).\n\n\nTable 1.2: Potential Outcomes for the Sum of 2 Dice Rolls\n\n\n\n1\n2\n3\n4\n5\n6\n\n\n\n\n1\n2\n3\n4\n5\n6\n7\n\n\n2\n3\n4\n5\n6\n7\n8\n\n\n3\n4\n5\n6\n7\n8\n9\n\n\n4\n5\n6\n7\n8\n9\n10\n\n\n5\n6\n7\n8\n9\n10\n11\n\n\n6\n7\n8\n9\n10\n11\n12\n\n\n\n\nEach of the cells in Table 1.2 can occur with equal probability. That implies that X = 2 with probability 1/36. And since there are two ways to get to X = 3, this outcome occurs with probability 2/36. Table 1.3 shows the probabilities for each X potential outcome:\n\n\nTable 1.3: Potential Outcomes and Probabilities for the Sum of 2 Dice Rolls\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(x_i\\)\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n\n\n\n\n\\(p_i\\)\n1/36\n2/36\n3/36\n4/36\n5/36\n6/36\n5/36\n4/36\n3/36\n2/36\n1/36\n\n\n\n\n\nExercise 2: Let X be the random variable “the number of likes you get on a social media post”. Suppose that you get 0-4 likes per post each with equal probability. Fill out Table 1.4 below.\n\n\n\nTable 1.4: Number of Likes on Social Media: Potential Outcomes and Probabilities\n\n\n\\(x_i\\)\n0\n1\n2\n3\n4\n\n\n\n\n\\(p_i\\)\n__\n__\n__\n__\n__"
+  },
+  {
+    "objectID": "random_variables.html#expected-values-of-discrete-random-variables",
+    "href": "random_variables.html#expected-values-of-discrete-random-variables",
+    "title": "1  Random Variables",
+    "section": "1.3 Expected Values of Discrete Random Variables",
+    "text": "1.3 Expected Values of Discrete Random Variables\nThe expected value of a random variable is its long-term average. We’ll use the notation \\(E[X] = \\mu_X\\). If the variable is discrete, you can calculate its expectation by taking the sum of all possible values of the random variable, each multiplied by their corresponding probabilities.\nExpectation of a discrete random variable \\(X\\): \\(E[X] = \\sum_i x_i p_i\\), where \\(x_i\\) is a potential outcome for \\(X\\) and \\(p_i\\) is the probability that outcome occurs.\n\nExample: What’s the expected value \\(\\mu_X\\) of a dice roll? Consulting Table 1.1, \\(E[X] = \\sum_i x_i p_i =\\) \\(1 * (1/6) + 2 * (1/6) + 3 * (1/6) + 4 * (1/6) + 5 * (1/6) + 6 * (1/6) = 21/6 = 3.5\\).\n\n\nExercise 3: Let X be the random variable “the number of likes you get on a social media post” and suppose that you get 0-4 likes per post each with equal probability. How many likes do you get in expectation for a post?"
+  },
+  {
+    "objectID": "random_variables.html#expected-value-rules",
+    "href": "random_variables.html#expected-value-rules",
+    "title": "1  Random Variables",
+    "section": "1.4 Expected Value Rules",
+    "text": "1.4 Expected Value Rules\nHere are some math rules about the way expected values work. Let \\(X\\), \\(Y\\), and \\(Z\\) be random variables and let \\(b\\) be a constant.\n\nThe expectation of the sum of several random variables is the sum of their expectations: \\(E[X + Y + Z] = E[X] + E[Y] + E[Z]\\).\nConstants can pass outside of an expectation: \\(E[bX] = b E[X]\\)\nThe expected value of a constant is that constant: \\(E[b] = b\\).\n\n\nExample: Let \\(X\\) and \\(Y\\) be random variables and let \\(b_1\\) and \\(b_2\\) be consants. If \\(Y = b_1 + b_2 X\\), then since \\(E[Y] = E[b_1 + b_2 X]\\), we can simplify using the rules above to get: \\(E[Y] = b_1 + b_2 E[X]\\).\n\n\nExercise 4: Imagine you have a social media account where you receive an average of 2 likes per post. At the beginning of the day, you make two posts and receive a total of 3 likes. You plan to make 5 more posts today. Given that \\(X\\) represents the number of likes on a single post and \\(E[X] = 2\\), as well as \\(Y\\) representing the total number of likes received today with the formula \\(Y = 3 + 5 * X\\), what is the expected total number of likes, \\(E[Y]\\), you should receive by the end of the day?"
+  },
+  {
+    "objectID": "random_variables.html#continuous-random-variables",
+    "href": "random_variables.html#continuous-random-variables",
+    "title": "1  Random Variables",
+    "section": "1.5 Continuous Random Variables",
+    "text": "1.5 Continuous Random Variables\nTODO"
+  },
+  {
+    "objectID": "random_variables.html#classwork",
+    "href": "random_variables.html#classwork",
+    "title": "1  Random Variables",
+    "section": "1.6 Classwork",
+    "text": "1.6 Classwork\n\nSuppose a social media user has an equal probability of getting 0-4 likes on any given post. Let X be the random variable representing their combined likes from two independent posts.\n\nWhat is the probability that X will be 2?\nWhat is the probability that X will be 6?\nWhat is \\(E[X]\\)?\nIf the user wants 10 likes in expectation every day, how many posts should they make each day?\n\nLet \\(X\\) and \\(Y\\) be discrete random variables, so \\(E[X] = \\sum_i x_i p_i\\). Should we expect in general that \\(E[XY] = E[X] E[Y]\\)? Explain your answer.\nTODO"
+  },
+  {
+    "objectID": "variance_covariance.html",
+    "href": "variance_covariance.html",
+    "title": "2  Variance and Covariance",
+    "section": "",
+    "text": "Reading: Dougherty R.4 and R.5 (pages 19 - 27)"
+  },
+  {
+    "objectID": "unbiasedness.html",
+    "href": "unbiasedness.html",
+    "title": "3  Unbiasedness",
+    "section": "",
+    "text": "Reading: Dougherty R.6 and R.7 (pages 27 - 35)"
+  },
+  {
+    "objectID": "R1_vectors_pipes.html#grab-a-computer",
+    "href": "R1_vectors_pipes.html#grab-a-computer",
+    "title": "4  R: vectors and pipes",
+    "section": "4.1 Grab a Computer",
+    "text": "4.1 Grab a Computer\nFirst things first, you should decide which computer you’d like to do your programming assignments on. It can be a Mac, Windows, or Linux machine: all are equally good. I do absolutely everything on my little macbook air laptop. Please let me know ASAP if you don’t have a computer to program on (chromebooks and ipads won’t work but there are workarounds I can discuss with you)."
+  },
+  {
+    "objectID": "R1_vectors_pipes.html#download-and-install-r",
+    "href": "R1_vectors_pipes.html#download-and-install-r",
+    "title": "4  R: vectors and pipes",
+    "section": "4.2 Download and Install R",
+    "text": "4.2 Download and Install R\nGo here: https://cran.r-project.org/ and follow the instructions to download R for your Linux, Windows, or Mac. You should download the latest release.\nMac users: make sure you know whether you have an Apple silicon mac or an older intel-based mac and make sure that you download the correct version of R. If you’re using a mac, you’ll also need to install xquartz: https://www.xquartz.org/."
+  },
+  {
+    "objectID": "R1_vectors_pipes.html#install-rstudio",
+    "href": "R1_vectors_pipes.html#install-rstudio",
+    "title": "4  R: vectors and pipes",
+    "section": "4.3 Install RStudio",
+    "text": "4.3 Install RStudio\nGo here: https://posit.co/download/rstudio-desktop/ and click the blue button that says step 2: install RStudio Desktop. Follow the instructions to complete the installation."
+  },
+  {
+    "objectID": "R1_vectors_pipes.html#open-rstudio-and-install-some-packages",
+    "href": "R1_vectors_pipes.html#open-rstudio-and-install-some-packages",
+    "title": "4  R: vectors and pipes",
+    "section": "4.4 Open RStudio and Install some Packages",
+    "text": "4.4 Open RStudio and Install some Packages\nRun these lines of code in your console to make sure you have the tidyverse installed and attached to your current session.\n\ninstall.packages(\"tidyverse\", dependencies = TRUE)\nlibrary(tidyverse)\n\nInstall qelp (quick help): an alternative set of beginner friendly help docs I created (with contributions from previous students) for commonly used functions in R and the tidyverse. Once you have the package installed, you can access the help docs from inside RStudio.\n\ninstall.packages(\"Rcpp\", dependencies = TRUE)\ninstall.packages(\"devtools\", dependencies = TRUE)\n\nIf prompted, type “yes” in your console and then hit enter when you’re asked if you want to install from sources. Then you can run the following:\n\nlibrary(devtools)\ninstall_github(\"cobriant/qelp\")\n\nTo test that everything worked, now run:\n\n?qelp::install.packages\n\nIf everything went right, the help docs I wrote on the function install.packages should pop up in the lower right hand pane. Whenever you want to read the qelp docs on a function, you type ?, qelp, two colons :: which means “I want the help docs on this function which is from the package qelp”, and then the name of the function you’re wondering about."
+  },
+  {
+    "objectID": "R1_vectors_pipes.html#download-this-lab-assignment",
+    "href": "R1_vectors_pipes.html#download-this-lab-assignment",
+    "title": "4  R: vectors and pipes",
+    "section": "4.5 Download this Lab Assignment",
+    "text": "4.5 Download this Lab Assignment\nClick this link to download the assignment.\nFind the folder you just downloaded (probably in your downloads folder). On Macs, opening the folder will unzip it. On Windows, you’ll right-click and hit “extract”. Then navigate to the new folder named EC320_lab1 and double click on the R project EC320_lab1.Rproj. RStudio should open. If it doesn’t, open RStudio and go to File > Open Project and then find EC320_lab1.Rproj.\nIt’s important to always open RStudio with the .RProj for the lab you’re working on. If you open the koan file instead of the .RProj, the tests will not run because they don’t have the information about how all the files in the folder are linked.\nIn RStudio, go to the lower righthand panel and hit the folder R. This takes you to a list of two exercises (koans) you’ll complete as homework. The first teaches you about vectors and the second teaches you about pipes. Read the introduction below and then jump in!"
+  },
+  {
+    "objectID": "R1_vectors_pipes.html#intro-to-r",
+    "href": "R1_vectors_pipes.html#intro-to-r",
+    "title": "4  R: vectors and pipes",
+    "section": "4.6 Intro to R",
+    "text": "4.6 Intro to R"
+  },
+  {
+    "objectID": "R2_tibbles_ggplot.html",
+    "href": "R2_tibbles_ggplot.html",
+    "title": "5  R: tibbles",
+    "section": "",
+    "text": "In this chapter, you’ll learn about holding data in tibbles (tidy tables) and you’ll get an introduction to ggplot (“grammar of graphics” plots)."
+  },
+  {
+    "objectID": "R2_tibbles_ggplot.html#download-this-lab-assignment",
+    "href": "R2_tibbles_ggplot.html#download-this-lab-assignment",
+    "title": "5  R: tibbles",
+    "section": "5.1 Download this Lab Assignment",
+    "text": "5.1 Download this Lab Assignment\nLink to download.\nFind the new folder (probably in your downloads folder). On Macs, opening the folder will unzip it. On Windows, you’ll right-click and hit “extract”. Then navigate to the new folder named EC320_lab2-main and double click on the R project EC320_lab2.Rproj. RStudio should open. If it doesn’t, open RStudio and go to File > Open Project and then find EC320_lab2.Rproj.\nIn RStudio, go to the lower righthand panel and hit the folder R. This takes you to the list of two exercises (koans) you’ll complete as homework."
+  },
+  {
+    "objectID": "R2_tibbles_ggplot.html#tibbles-and-intro-to-ggplot",
+    "href": "R2_tibbles_ggplot.html#tibbles-and-intro-to-ggplot",
+    "title": "5  R: tibbles",
+    "section": "5.2 tibbles and intro to ggplot",
+    "text": "5.2 tibbles and intro to ggplot"
+  },
+  {
+    "objectID": "simple_reg.html",
+    "href": "simple_reg.html",
+    "title": "6  Simple Regression",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 1 (pages 85 - 112)"
+  },
+  {
+    "objectID": "reg_coefs.html",
+    "href": "reg_coefs.html",
+    "title": "7  Properties of Regression Coefficients",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 2.1-2.3 (pages 113 - 125)"
+  },
+  {
+    "objectID": "R3_dplyr.html#download-the-assignment",
+    "href": "R3_dplyr.html#download-the-assignment",
+    "title": "8  R: dplyr",
+    "section": "8.1 Download the assignment",
+    "text": "8.1 Download the assignment\nLink to download."
+  },
+  {
+    "objectID": "hypothesis_testing.html",
+    "href": "hypothesis_testing.html",
+    "title": "9  Hypothesis Testing",
+    "section": "",
+    "text": "Homework: Love Island Data Project here.\nClasswork: Thinking more about the (love island) linear probability model: which of our OLS assumptions hold and which fail to hold?"
+  },
+  {
+    "objectID": "multiple_reg.html",
+    "href": "multiple_reg.html",
+    "title": "11  Multiple Regression",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 3 (pages 156 - 196)"
+  },
+  {
+    "objectID": "nonlinear.html",
+    "href": "nonlinear.html",
+    "title": "12  Nonlinear Models and Transformations of Variables",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 4 (pages 197 - 229)\nWhen you’re reading papers in applied economics, you’ll often see models with transformations of variables (squared, interacted with other variables, logs of variables). This chapter offers some explanation about why you’ll see those things. All of these models can be estimated using OLS because while they’re not necessarily linear in variables, they’re linear in the parameters \\(\\beta\\).\nModels that are linear in parameters (and can be estimated with OLS):\n\\[\\begin{align}\ny_i &= \\beta_0 + \\beta_1 x_{1i} + \\beta_2 x_{2i} + u_i \\\\\ny_i &= \\beta_0 + \\beta_1 x_{i} + \\beta_2 x_{i}^2 + u_i \\\\\ny_i &= \\beta_0 + \\beta_1 x_{1i} + \\beta_2 x_{2i} + \\beta_3 x_{1i} x_{2i} + u_i \\\\\nlog(y_i) &= \\beta_0 + \\beta_1 log(x_{i}) + u_i \\\\\nlog(y_i) &= \\beta_0 + \\beta_1 x_{i} + u_i\n\\end{align}\\]\nAnd an example of a model that’s not linear in parameters (and can’t be estimated with OLS, because \\(\\beta_1\\) and \\(\\beta_2\\) can’t be separately identified here):\n\\[y_i = \\beta_0 + \\beta_1 \\beta_2 x_{i} + u_i\\]"
+  },
+  {
+    "objectID": "nonlinear.html#linear",
+    "href": "nonlinear.html#linear",
+    "title": "12  Nonlinear Models and Transformations of Variables",
+    "section": "12.1 Linear",
+    "text": "12.1 Linear\n\\(y_i = \\beta_0 + \\beta_1 x_i + u_i\\)\n\nIntercept: \\(\\beta_0 = E[y | x = 0]\\).\nSlope: \\(\\beta_1\\) is the expected change in y given an increase in x of one unit.\n\nFor example:\n\\(weight_i = -80 + 40 height_i + u_i\\)\nIf \\(weight_i\\) is measured in lbs and \\(height_i\\) is measured in feet, then we’d interpret -80 as: “Someone 0 feet tall is expected to weigh -80 lbs”. And we’d interpret 40 as “If you’re told that a person is 1 foot taller than average, you’d expect them to be 40 lbs heavier than average”."
+  },
+  {
+    "objectID": "nonlinear.html#squared-terms",
+    "href": "nonlinear.html#squared-terms",
+    "title": "12  Nonlinear Models and Transformations of Variables",
+    "section": "12.2 Squared terms",
+    "text": "12.2 Squared terms\n\\(y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + u_i\\)"
+  },
+  {
+    "objectID": "nonlinear.html#interactions",
+    "href": "nonlinear.html#interactions",
+    "title": "12  Nonlinear Models and Transformations of Variables",
+    "section": "12.3 Interactions",
+    "text": "12.3 Interactions\nAn interaction is two variables multiplied. They would usually appear in the model alone as well:\n\\(y_i = \\beta_0 + \\beta_1 x_{1i} + \\beta_2 x_{2i} + \\beta_3 x_{1i} x_{2i} + u_i\\)"
+  },
+  {
+    "objectID": "nonlinear.html#log-linear",
+    "href": "nonlinear.html#log-linear",
+    "title": "12  Nonlinear Models and Transformations of Variables",
+    "section": "12.4 Log-linear",
+    "text": "12.4 Log-linear\n\\(log(y_i) = \\beta_0 + \\beta_1 x_i + u_i\\)\nThe formula for exponential growth or decay:\n\\(y = (initial \\ amount) \\ e^{rt}\\)\nWhere \\(r\\) is the rate of change and \\(t\\) is the time (perhaps measured in hours, days, months, etc). The interpretation is that when t increases by 1, \\(y\\) increases by r%. To include a disturbance term u, you’d do this:\n\\(y = (initial \\ amount) \\ e^{rt + u}\\)\nLet’s take the log of both sides. Recalling that \\(log(a b) = log(a) + log(b)\\), and \\(log(a^b) = b \\ log(a)\\):\n\\(log(y) = log(initial \\ amount) + r t log(e) + u log(e)\\)\nAnd since \\(log(e) = 1\\):\n\\(log(y) = log(initial \\ amount) + r t + u\\)\nIf we let \\(\\beta_0 = log(initial \\ amount)\\), \\(r = \\beta_1\\), and \\(t = x\\), then we get the log-linear simple regression:\n\\(log(y_i) = \\beta_0 + \\beta_1 x_i + u_i\\)\nAnd since \\(r = \\beta_1\\), the interpretation of \\(\\beta_1\\) is the same as the interpretation for \\(r\\): when t increases by 1, \\(y\\) increases by 100 * r %.\nFor example, if we estimated:\n\\(log(y_i) = 5 + .1 x_i + u_i\\)\nThe interpretation of the .1 would be that if x increases by 1, y is expected to increase by 10%.\nSimulation:\n\nlibrary(tidyverse)\n\nexponential_growth_data <- tibble(\n  x = 1:100,\n  y = exp(.1 * x + rnorm(n = 100, sd = 1))\n)\n\nexponential_growth_data %>%\n  ggplot(aes(x = x, y = y)) +\n    geom_point() +\n    geom_smooth(se = FALSE)\n\n\n\nexponential_growth_data %>%\n  ggplot(aes(x = x, y = y)) +\n    geom_point() +\n    geom_smooth(se = FALSE, method = lm) +\n    scale_y_log10()\n\n\n\nexponential_growth_data %>%\n  lm(log(y) ~ x, data = .) %>%\n  broom::tidy()\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  <chr>          <dbl>     <dbl>     <dbl>    <dbl>\n1 (Intercept)   0.177    0.191       0.928 3.56e- 1\n2 x             0.0959   0.00329    29.2   3.73e-50"
+  },
+  {
+    "objectID": "nonlinear.html#log-log",
+    "href": "nonlinear.html#log-log",
+    "title": "12  Nonlinear Models and Transformations of Variables",
+    "section": "12.5 Log-log",
+    "text": "12.5 Log-log\n\\(log(y_i) = \\beta_0 + \\beta_1 log(x_i) + u_i\\)\nConsider a constant elasticity demand curve, where the elasticity \\(\\varepsilon\\) is the percent change in \\(Q_d\\) corresponding to a 1 percent change in price:\n\\[Q_d = \\beta_0 P^{\\beta_1} \\tag{12.1}\\]\nWhich parameter represents the elasticity \\(\\varepsilon\\)?\n\\[\\begin{align*}\n\\varepsilon &= \\frac{\\% \\Delta Q_d}{\\% \\Delta P} \\\\\n  &= \\frac{\\frac{\\partial Q}{Q}}{\\frac{\\partial P}{P}} \\\\\n  &= \\frac{\\partial Q}{\\partial P} \\frac{P}{Q} \\\\\n  &= \\frac{\\partial (\\beta_0 P^{\\beta_1})}{\\partial P} \\frac{P}{Q} \\\\\n  &= \\beta_0 \\beta_1 P^{\\beta_1 - 1} \\frac{P}{Q} \\\\\n  &= \\beta_0 \\beta_1 P^{\\beta_1 - 1} \\frac{P}{\\beta_0 P^{\\beta_1}} \\\\\n  &= \\beta_1\n\\end{align*}\\]\nSo if we take logs of both sides of Equation 12.1 and change Q to y and P to x:\n\\[log(y) = log(\\beta_0) + \\beta_1 log(x)\\]\nThen we can estimate this model using OLS because it’s linear in parameters. \\(\\beta_1\\) has the same interpretation as an elasticity: it’s the expected percent change in \\(y\\) corresponding to a 1 percent change in \\(x\\). So if we estimate the model and get:\n\\[log(y) = .25 + .72 log(x)\\]\nWe’d say that a 1 percent increase in x is associated with a .72 percent increase in y."
+  },
+  {
+    "objectID": "dummy_vars.html",
+    "href": "dummy_vars.html",
+    "title": "13  Dummy Variables",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 5 (pages 230 - 260)"
+  },
+  {
+    "objectID": "omitted_vars.html",
+    "href": "omitted_vars.html",
+    "title": "14  Omitted Variable Bias",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 6.1-6.2 (pages 261 - 272)"
+  },
+  {
+    "objectID": "proxy_vars.html",
+    "href": "proxy_vars.html",
+    "title": "15  Proxy Variables",
+    "section": "",
+    "text": "Reading: Dougherty Chapter 6.3-6.5 (pages 272 - 286)"
+  }
+]

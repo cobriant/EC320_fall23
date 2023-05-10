@@ -1,0 +1,9 @@
+# Hypothesis Testing
+
+<p style="background-color:#f7f0df; border-width:3px; border-style:solid; border-color:#f7f0df; padding: 1em;">
+**Reading**: Dougherty R.8-R-13; 2.4-2.7 (pages 35 - 68; 126 - 155)
+</p>
+
+Homework: Love Island Data Project [here](https://github.com/cobriant/EC320lab6).
+
+Classwork: Thinking more about the (love island) linear probability model: which of our OLS assumptions hold and which fail to hold?

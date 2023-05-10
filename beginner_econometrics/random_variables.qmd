@@ -1,0 +1,164 @@
+# Random Variables
+
+<p style="background-color:#f7f0df; border-width:3px; border-style:solid; border-color:#f7f0df; padding: 1em;">
+**Reading**: Dougherty R.2 and R.3 (pages 7 - 19)
+</p>
+
+::: {.content-hidden}
+
+Each chapter should:
+- be less than 2000 words
+- cover 3-5 main ideas from the reading: always simplify when you can, this class is hard enough
+- start with an empowerment promise: "by the end of this chapter you'll understand these main ideas..."
+- have examples and homework exercises which are very simple for students to do and have answers like "yes/no" or a number which can be graded automatically with a Canvas quiz
+- have 3 more challenging questions which will become classwork to be done in groups with instructor assistance
+- conclude with a "so there you have it" statement that emphasizes how you've delivered on your empowerment promise
+
+:::
+
+## Random Variables
+
+A **random variable** is any variable whose value cannot be predicted exactly. A few examples:
+
+1. The message you get in a fortune cookie is a random variable.
+2. The time you spend searching for your keys after you've misplaced them is a random variable.
+3. The number of likes you get on a social media post is a random variable.
+4. The number of customers who enter a small retail store on a given day is a random variable.
+5. The sales revenue at that small retail store on a given day is a random variable.
+
+Some random variables are **discrete** while others are **continuous**. What's the difference? Discrete random variables are *counted* like the number of M&M's you have, while continuous random variables are *measured* like how heavy your bag of candy is. Discrete random variables take on a small number of possible values, while continuous random variables can take on a very large number of possible values.
+
+Other variables are categorical instead of being numeric. They may represent qualitative data that can be divided into categories or groups. We'll lump categorical variables in with discrete variables and we'll explain why toward the end of this course (see Chapter 13: Dummy Variables).
+
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+**Example**: The message you get in a fortune cookie takes on values like "An exciting opportunity lies ahead of you", which is not numeric, it's categorical. We'll therefore label this random variable a **discrete** random variable.
+</p>
+
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+**Example**: The "time you spend searching for your keys after you've misplaced them" takes on values like 3.982 minutes. It's a value that can be measured precisely instead of counted, so we'd label this random variable a **continuous** random variable.
+</p>
+
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+**Exercise 1**: Is "the number of likes you get on a social media post" discrete or continuous? Is "the number of customers who enter a small retail store on a given day" discrete or continuous? Is "the sales revenue at that small retail store on a given day" discrete or continuous?
+</p>
+
+## Discrete Probability Distributions
+
+Consider the discrete random variable "a dice roll". It could take on values 1 to 6 and if it's a fair die, it takes on each of those values with probability 1/6. Our notation will be: X is the random variable, $x_i$ is a potential outcome for $X$, and each potential outcome $x_i$ happens with probability $p_i$:
+
+| $x_i$ |  1 |  2 | 3 |  4 | 5 | 6 |
+|---+---+---+---+---+---+---|
+| $p_i$ | 1/6  | 1/6  | 1/6  | 1/6  | 1/6 | 1/6 |
+
+: Potential Outcomes and Probabilities for a Dice Roll {#tbl-dice}
+
+Consider another random variable $X$ as the sum of two dice rolls. In @tbl-dice, the first row represents the potential outcomes for the first roll and the first column represents the potential outcomes for the second roll. The values in the interior of the table represent potential outcomes for $X$ (the sum).
+
+|  |  1 |  2 | 3 |  4 | 5 | 6 |
+|---+---+---+---+---+---+---|
+| **1** | 2 | 3 | 4 | 5 | 6 | 7 |
+| **2** | 3 | 4 | 5 | 6 | 7 | 8 |
+| **3** | 4 | 5 | 6 | 7 | 8 | 9 |
+| **4** | 5 | 6 | 7 | 8 | 9 | 10 |
+| **5** | 6 | 7 | 8 | 9 | 10 | 11 |
+| **6** | 7 | 8 | 9 | 10 | 11 | 12 |
+
+: Potential Outcomes for the Sum of 2 Dice Rolls {#tbl-twodice}
+
+Each of the cells in @tbl-twodice can occur with equal probability. That implies that X = 2 with probability 1/36. And since there are two ways to get to X = 3, this outcome occurs with probability 2/36. @tbl-twodiceprobs shows the probabilities for each X potential outcome:
+
+| $x_i$ | 2 | 3 |  4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---+---+---+---+---+---+---+---+---+---+---+---|
+| $p_i$ | 1/36  | 2/36  | 3/36  | 4/36  | 5/36 | 6/36 | 5/36 | 4/36 | 3/36 | 2/36 | 1/36 |
+
+: Potential Outcomes and Probabilities for the Sum of 2 Dice Rolls {#tbl-twodiceprobs}
+
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+**Exercise 2**: Let X be the random variable "the number of likes you get on a social media post". Suppose that you get 0-4 likes per post each with equal probability. Fill out @tbl-likes below.
+</p>
+
+| $x_i$ | 0 | 1 |  2 | 3 | 4 |
+|---+---+---+---+---+---|
+| $p_i$ | __ | __ | __ | __ | __ |
+
+: Number of Likes on Social Media: Potential Outcomes and Probabilities {#tbl-likes}
+
+## Expected Values of Discrete Random Variables
+
+The **expected value** of a random variable is its long-term average. We'll use the notation $E[X] = \mu_X$. If the variable is discrete, you can calculate its expectation by taking the sum of all possible values of the random variable, each multiplied by their corresponding probabilities.
+
+Expectation of a discrete random variable $X$: $E[X] = \sum_i x_i p_i$, where $x_i$ is a potential outcome for $X$ and $p_i$ is the probability that outcome occurs.
+
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+**Example**: What's the expected value $\mu_X$ of a dice roll? Consulting @tbl-dice, $E[X] = \sum_i x_i p_i =$ $1 * (1/6) + 2 * (1/6) + 3 * (1/6) + 4 * (1/6) + 5 * (1/6) + 6 * (1/6) = 21/6 = 3.5$.
+</p>
+
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+**Exercise 3**: Let X be the random variable "the number of likes you get on a social media post" and suppose that you get 0-4 likes per post each with equal probability. How many likes do you get in expectation for a post?
+</p>
+
+## Expected Value Rules
+
+Here are some math rules about the way expected values work. Let $X$, $Y$, and $Z$ be random variables and let $b$ be a constant.
+
+1. The expectation of the sum of several random variables is the sum of their expectations: $E[X + Y + Z] = E[X] + E[Y] + E[Z]$.
+
+2. Constants can pass outside of an expectation: $E[bX] = b E[X]$
+
+3. The expected value of a constant is that constant: $E[b] = b$.
+
+<p style="background-color:#8dced5; border-width:3px; border-style:solid; border-color:#8dced5; padding: 1em;">
+**Example**: Let $X$ and $Y$ be random variables and let $b_1$ and $b_2$ be consants. If $Y = b_1 + b_2 X$, then since $E[Y] = E[b_1 + b_2 X]$, we can simplify using the rules above to get: $E[Y] = b_1 + b_2 E[X]$.
+</p>
+
+<p style="background-color:#d2ff96; border-width:3px; border-style:solid; border-color:#d2ff96; padding: 1em;">
+**Exercise 4**: Imagine you have a social media account where you receive an average of 2 likes per post. At the beginning of the day, you make two posts and receive a total of 3 likes. You plan to make 5 more posts today. Given that $X$ represents the number of likes on a single post and $E[X] = 2$, as well as $Y$ representing the total number of likes received today with the formula $Y = 3 + 5 * X$, what is the expected total number of likes, $E[Y]$, you should receive by the end of the day?
+</p>
+
+## Continuous Random Variables
+
+TODO
+
+::: {.content-hidden}
+
+| $x_i$ |  1 |  2 | 3 |  4 | 5 |
+|---+---+---+---+---+---|
+| $p_i$ |   |   |   |   | |
+| $x_i - \mu_x$ | | | | | |
+| $(x_i - \mu_x)^2$ | | | | | |
+| $p_i(x_i - \mu_x)^2$ | | | | | |
+
+   d) What is the variance of the number of likes they will get? Recall: $Var(X) = E[(X - \mu_x)^2]$ where $\mu_x$ is E[X]. (provide a table for students to fill out)
+
+   e) Suppose instead that the user gets 1 like wp .4, 2 likes wp .3,  3 likes wp .2. and 4 likes wp .1. what would the variance be in this case, and would this scenario yield a higher or lower variance than the previous scenario?
+
+Recall expectation rules (let X and Y be random variables and b be a constant):
+
+- The expectation of the sum of random variables is the sum of their expectations: $E[X + Y] = E[X] + E[Y]$
+- The expectation of a constant is that constant: $E[b] = b$
+- Constants can pass outside of an expectation: $E[bX] = b E[X]$
+
+3) [@3] Suppose X and Y are two random variables and $E[X] = 1$ and $E[Y] = 3$.
+
+  a) Find $E[X + Y]$.
+
+  b) Find $E[2X + 4]$.
+  
+:::
+
+## Classwork
+
+1) Suppose a social media user has an equal probability of getting 0-4 likes on any given post. Let X be the random variable representing their combined likes from two independent posts.
+
+   a) What is the probability that X will be 2?
+
+   b) What is the probability that X will be 6?
+
+   c) What is $E[X]$?
+
+   d) If the user wants 10 likes in expectation every day, how many posts should they make each day?
+
+2) Let $X$ and $Y$ be discrete random variables, so $E[X] = \sum_i x_i p_i$. Should we expect in general that $E[XY] = E[X] E[Y]$? Explain your answer.
+
+3) TODO
+
