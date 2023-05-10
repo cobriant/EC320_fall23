@@ -1,5 +1,7 @@
 # EC320 Fall 2023
 
+Book published [here](https://colleen.quarto.pub/the-beginners-econometrics-workbook/).
+
 | Class  | Topic  | Homework  |
 |-----|-----|-----|
 | 1 | Syllabus | HW1: R.2 and R.3 |
